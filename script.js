@@ -172,6 +172,9 @@ function startTimer() {
     timeLeft = QUESTION_TIME;
     timerElement.textContent = `Time: ${timeLeft}`;
 
+    // Hide Next Question while answering
+    nextButton.style.display = "none";
+
     timerInterval = setInterval(() => {
         timeLeft--;
 
@@ -182,12 +185,12 @@ function startTimer() {
 
             const buttons = document.querySelectorAll(".option-button");
 
-            // Disable all answer buttons
+            // Disable the answer buttons
             buttons.forEach(button => {
                 button.disabled = true;
             });
 
-            // Show that time has run out
+            // Show Time's Up
             resultElement.textContent = "Time's up!";
             resultElement.style.color = "#ea4335";
 
@@ -199,32 +202,59 @@ function startTimer() {
             });
 
             // =========================
-            // 5 SECOND AUTO-SKIP TIMER
+            // 5 SECOND COUNTDOWN
             // =========================
 
-            let skipTime = 5;
+            if (questionNumber < MAX_ROUNDS) {
 
-            timerElement.textContent =
-                `Next question in: ${skipTime}`;
+                // Make Next Question clickable
+                nextButton.style.display = "inline-block";
+                nextButton.disabled = false;
 
-            timerInterval = setInterval(() => {
-                skipTime--;
+                let skipTime = 5;
 
                 timerElement.textContent =
                     `Next question in: ${skipTime}`;
 
-                if (skipTime <= 0) {
-                    stopTimer();
+                timerInterval = setInterval(() => {
+                    skipTime--;
 
-                    // If this was the last question, finish the game
-                    if (questionNumber >= MAX_ROUNDS) {
-                        finishGame();
-                    } else {
-                        // Otherwise automatically go to the next question
+                    timerElement.textContent =
+                        `Next question in: ${skipTime}`;
+
+                    if (skipTime <= 0) {
+                        stopTimer();
+
+                        nextButton.style.display = "none";
+
                         nextQuestion();
                     }
-                }
-            }, 1000);
+                }, 1000);
+
+            } else {
+
+                // =========================
+                // FINAL QUESTION
+                // =========================
+
+                let skipTime = 5;
+
+                timerElement.textContent =
+                    `Results in: ${skipTime}`;
+
+                timerInterval = setInterval(() => {
+                    skipTime--;
+
+                    timerElement.textContent =
+                        `Results in: ${skipTime}`;
+
+                    if (skipTime <= 0) {
+                        stopTimer();
+
+                        finishGame();
+                    }
+                }, 1000);
+            }
         }
     }, 1000);
 }
