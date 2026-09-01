@@ -476,7 +476,16 @@ function appendLeaderboardRow(row, isCurrentPlayer = false) {
     leaderboardElement.appendChild(item);
 }
 
-nextButton.addEventListener("click", nextQuestion);
+nextButton.addEventListener("click", () => {
+    // Cancel the 5-second countdown
+    stopTimer();
+
+    // Hide the Next Question button
+    nextButton.style.display = "none";
+
+    // Immediately go to the next question
+    nextQuestion();
+});
 
 playAgainButton.addEventListener("click", () => {
     leaderboardScreen.style.display = "none";
