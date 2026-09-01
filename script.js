@@ -170,7 +170,10 @@ function startTimer() {
     stopTimer();
 
     timeLeft = QUESTION_TIME;
-    timerElement.textContent = `Time: ${timeLeft}`;
+    timerElement.textContent = `00:${String(timeLeft).padStart(2, "0")}`;
+
+    // Reset the timer appearance
+    timerElement.classList.remove("timer-danger");
 
     // Hide Next Question while answering
     nextButton.style.display = "none";
@@ -178,19 +181,32 @@ function startTimer() {
     timerInterval = setInterval(() => {
         timeLeft--;
 
-        timerElement.textContent = `Time: ${timeLeft}`;
+        // Show timer as MM:SS
+        timerElement.textContent =
+            `00:${String(timeLeft).padStart(2, "0")}`;
+
+        // =========================
+        // DANGER MODE
+        // =========================
+
+        if (timeLeft < 3 && timeLeft > 0) {
+            timerElement.classList.add("timer-danger");
+        } else {
+            timerElement.classList.remove("timer-danger");
+        }
 
         if (timeLeft <= 0) {
             stopTimer();
 
+            // Remove danger effect
+            timerElement.classList.remove("timer-danger");
+
             const buttons = document.querySelectorAll(".option-button");
 
-            // Disable the answer buttons
             buttons.forEach(button => {
                 button.disabled = true;
             });
 
-            // Show Time's Up
             resultElement.textContent = "Time's up!";
             resultElement.style.color = "#ea4335";
 
@@ -207,20 +223,19 @@ function startTimer() {
 
             if (questionNumber < MAX_ROUNDS) {
 
-                // Make Next Question clickable
                 nextButton.style.display = "inline-block";
                 nextButton.disabled = false;
 
                 let skipTime = 5;
 
                 timerElement.textContent =
-                    `Next question in: ${skipTime}`;
+                    `00:${String(skipTime).padStart(2, "0")}`;
 
                 timerInterval = setInterval(() => {
                     skipTime--;
 
                     timerElement.textContent =
-                        `Next question in: ${skipTime}`;
+                        `00:${String(skipTime).padStart(2, "0")}`;
 
                     if (skipTime <= 0) {
                         stopTimer();
@@ -240,13 +255,13 @@ function startTimer() {
                 let skipTime = 5;
 
                 timerElement.textContent =
-                    `Results in: ${skipTime}`;
+                    `00:${String(skipTime).padStart(2, "0")}`;
 
                 timerInterval = setInterval(() => {
                     skipTime--;
 
                     timerElement.textContent =
-                        `Results in: ${skipTime}`;
+                        `00:${String(skipTime).padStart(2, "0")}`;
 
                     if (skipTime <= 0) {
                         stopTimer();
