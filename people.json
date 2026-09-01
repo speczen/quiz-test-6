@@ -1,0 +1,114 @@
+[
+    {
+        "name": "abdul kalam",
+        "image": "images/abdul kalam.png"
+    },
+    {
+        "name": "abraham lincon",
+        "image": "images/abraham lincon.png"
+    },
+    {
+        "name": "ambedkar",
+        "image": "images/ambedkar.png"
+    },
+    {
+        "name": "aryabatta",
+        "image": "images/aryabatta.png"
+    },
+    {
+        "name": "barack obama",
+        "image": "images/barack obama.png"
+    },
+    {
+        "name": "bhagat singh",
+        "image": "images/bhagat singh.png"
+    },
+    {
+        "name": "Dr. sarivepalli radhakrishna",
+        "image": "images/Dr. sarivepalli radhakrishna.png"
+    },
+    {
+        "name": "george washington",
+        "image": "images/george washington.png"
+    },
+    {
+        "name": "indira ghandhi",
+        "image": "images/indira ghandhi.png"
+    },
+    {
+        "name": "issac newton",
+        "image": "images/issac newton.png"
+    },
+    {
+        "name": "kalpana chawla",
+        "image": "images/kalpana chawla.png"
+    },
+    {
+        "name": "kiran bedi",
+        "image": "images/kiran bedi.png"
+    },
+    {
+        "name": "mahatma ghandhi",
+        "image": "images/mahatma ghandhi.png"
+    },
+    {
+        "name": "martin luther king jr",
+        "image": "images/martin luther king jr.png"
+    },
+    {
+        "name": "micheal jackson",
+        "image": "images/micheal jackson.png"
+    },
+    {
+        "name": "mother teresa",
+        "image": "images/mother teresa.png"
+    },
+    {
+        "name": "mozart",
+        "image": "images/mozart.png"
+    },
+    {
+        "name": "napoleon bonaparte",
+        "image": "images/napoleon bonaparte.png"
+    },
+    {
+        "name": "nelson mandela",
+        "image": "images/nelson mandela.png"
+    },
+    {
+        "name": "nikola testla",
+        "image": "images/nikola testla.png"
+    },
+    {
+        "name": "pablo picasso",
+        "image": "images/pablo picasso.png"
+    },
+    {
+        "name": "queen elizabeth II",
+        "image": "images/queen elizabeth II.png"
+    },
+    {
+        "name": "sarojini naidu",
+        "image": "images/sarojini naidu.png"
+    },
+    {
+        "name": "srinivasa ramanujan",
+        "image": "images/srinivasa ramanujan.png"
+    },
+    {
+        "name": "subhas chandra bose",
+        "image": "images/subhas chandra bose.png"
+    },
+    {
+        "name": "sunita williams",
+        "image": "images/sunita williams.png"
+    },
+    {
+        "name": "tanguturi prakasam panthulu",
+        "image": "images/tanguturi prakasam panthulu.png"
+    },
+    {
+        "name": "thomas alva edison",
+        "image": "images/thomas alva edison.png"
+    }
+]

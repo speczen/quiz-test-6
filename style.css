@@ -1,0 +1,474 @@
+/*this code was made by Injeti Roni Atchut of class X B*/
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    font-family: Arial, sans-serif;
+
+    background: #f1f1f1;
+}
+
+/*this code was made by Injeti Roni Atchut of class X B*/
+
+.quiz-container {
+    width: 100%;
+    max-width: 600px;
+
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+h1 {
+    margin-top: 0;
+
+    font-size: 32px;
+}
+
+.score {
+    font-size: 18px;
+
+    margin-bottom: 5px;
+}
+
+.question-number {
+    color: #777;
+
+    margin-bottom: 20px;
+}
+
+/*this code was made by Injeti Roni Atchut of class X B*/
+
+/* =========================
+   7:9 PHOTO
+   ========================= */
+
+.photo-container {
+    width: 100%;
+    max-width: 350px;
+
+    aspect-ratio: 7 / 9;
+
+    margin: 0 auto 25px;
+
+    background: #ddd;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+}
+
+.photo-container img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+h2 {
+    margin-bottom: 20px;
+
+    font-size: 22px;
+}
+
+/*this code was made by Injeti Roni Atchut of class X B*/
+
+/* =========================
+   ANSWER BUTTONS
+   ========================= */
+
+.options {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+/*this code was made by Injeti Roni Atchut of class X B*/
+
+.option-button {
+    padding: 16px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #eeeeee;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.option-button:hover {
+    background: #dddddd;
+
+    transform: translateY(-2px);
+}
+
+/*this code was made by Injeti Roni Atchut of class X B*/
+
+.option-button:disabled {
+    cursor: default;
+
+    transform: none;
+}
+
+.option-button.correct {
+    background: #35a853;
+
+    color: white;
+}
+
+.option-button.wrong {
+    background: #ea4335;
+
+    color: white;
+}
+
+/*this code was made by Injeti Roni Atchut of class X B*/
+
+/* =========================
+   RESULT
+   ========================= */
+
+#result {
+    min-height: 30px;
+
+    margin: 20px 0;
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+/*this code was made by Injeti Roni Atchut of class X B*/
+
+/* =========================
+   NEXT BUTTON
+   ========================= */
+
+#next-button {
+    display: none;
+
+    padding: 14px 28px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #222;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+#next-button:hover {
+    background: #444;
+}
+
+/*this code was made by Injeti Roni Atchut of class X B*/
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 500px) {
+
+    .quiz-container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .options {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* Ranked leaderboard */
+#leaderboard {
+    list-style: none;
+    text-align: left;
+    margin: 0 auto 25px;
+    padding: 0;
+    max-width: 450px;
+}
+#leaderboard .leaderboard-row {
+    display: grid;
+    grid-template-columns: 45px 1fr auto;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 12px;
+    margin: 7px 0;
+    border-radius: 10px;
+    border-bottom: 1px solid #eee;
+}
+.leaderboard-rank { font-weight: bold; text-align: center; }
+.leaderboard-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.leaderboard-score { white-space: nowrap; }
+#leaderboard .current-player {
+    box-shadow: 0 0 0 2px rgba(0,0,0,.13), 0 0 14px rgba(0,0,0,.16);
+    border-bottom-color: transparent;
+}
+#leaderboard .leaderboard-divider {
+    text-align: center;
+    margin: 16px 0 8px;
+    padding: 6px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.podium-placeholders {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+    max-width: 330px;
+    margin: 0 auto 20px;
+}
+.podium-placeholder { aspect-ratio: 1 / 1; }
+.rank-placeholder-image {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 14px;
+    border: 2px dashed #aaa;
+    background: #f5f5f5;
+    color: #555;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.4;
+}
+@media (max-width:500px) {
+    .podium-placeholders { max-width:280px; }
+    #leaderboard .leaderboard-row {
+        grid-template-columns:38px 1fr auto;
+        padding:10px 8px;
+    }
+}
+
+.podium-placeholder:nth-child(1) {
+    width: 100%;
+    justify-self: center;
+}
+
+.podium-placeholder:nth-child(2) {
+    width: 85%;
+    justify-self: center;
+}
+
+.podium-placeholder:nth-child(3) {
+    width: 70%;
+    justify-self: center;
+}
+
+/*this code was made by Injeti Roni Atchut of class X B*/
+/*this code was made by Injeti Roni Atchut of class X B*/
+/*this code was made by Injeti Roni Atchut of class X B*/
+/*this code was made by Injeti Roni Atchut of class X B*/
+/*this code was made by Injeti Roni Atchut of class X B*/
+/*this code was made by Injeti Roni Atchut of class X B*/
+/*this code was made by Injeti Roni Atchut of class X B*/
+/*this code was made by Injeti Roni Atchut of class X B*/
+/*this code was made by Injeti Roni Atchut of class X B*/
+/*this code was made by Injeti Roni Atchut of class X B*/
+/*this code was made by Injeti Roni Atchut of class X B*/
+/*this code was made by Injeti Roni Atchut of class X B*/
+/*this code was made by Injeti Roni Atchut of class X B*/
+/*this code was made by Injeti Roni Atchut of class X B*/
+/*this code was made by Injeti Roni Atchut of class X B*/
+/*this code was made by Injeti Roni Atchut of class X B*/
+/*this code was made by Injeti Roni Atchut of class X B*/
+/*this code was made by Injeti Roni Atchut of class X B*/
+/* =========================
+   RANK IMAGES
+   ========================= */
+
+.rank-image-1 { width: 32px; height: 32px; }
+.rank-image-2 { width: 28px; height: 28px; }
+.rank-image-3 { width: 24px; height: 24px; }
+
+@media (max-width: 500px) {
+    .rank-image-1 { width: 30px; height: 30px; }
+    .rank-image-2 { width: 26px; height: 26px; }
+    .rank-image-3 { width: 22px; height: 22px; }
+}
+
+/* =========================
+   START SCREEN LOOK
+   ========================= */
+
+.start-screen {
+    max-width: 560px;
+    margin: 80px auto;
+    padding: 45px 40px 50px;
+    text-align: center;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.start-screen h1 {
+    margin-bottom: 30px;
+    font-size: 42px;
+}
+
+.name-label {
+    margin-bottom: 12px;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.name-input {
+    display: block;
+    width: 85%;
+    max-width: 390px;
+    margin: 0 auto 18px;
+    padding: 15px 18px;
+    box-sizing: border-box;
+    border: 2px solid #aaa;
+    border-radius: 10px;
+    background: white;
+    font-size: 17px;
+    text-align: center;
+}
+
+.name-input:focus {
+    border-color: #555;
+    outline: none;
+}
+
+.start-button {
+    min-width: 150px;
+    padding: 14px 28px;
+    border-radius: 10px;
+    background: #35a853;
+    color: white;
+    font-weight: bold;
+}
+
+@media (max-width: 500px) {
+    .start-screen {
+        margin: 40px 15px;
+        padding: 35px 22px 40px;
+    }
+
+    .start-screen h1 {
+        font-size: 32px;
+    }
+
+    .name-input {
+        width: 100%;
+    }
+}
+
+/* =========================
+   TIMER + SCORE POSITION
+   ========================= */
+
+#timer {
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    margin: 0 !important;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#score {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* =========================
+   MUSIC MUTE BUTTON
+   ========================= */
+
+#mute-button {
+    position: fixed;
+    bottom: 20px;
+    right: 25px;
+
+    width: 44px;
+    height: 44px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: white;
+    color: #222;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+
+    z-index: 9999;
+
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+#mute-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+#mute-button:active {
+    transform: scale(0.95);
+}
+
+@media (max-width: 500px) {
+    #mute-button {
+        top: 12px;
+        left: 12px;
+
+        width: 40px;
+        height: 40px;
+
+        font-size: 18px;
+    }
+}
