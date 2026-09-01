@@ -182,29 +182,49 @@ function startTimer() {
 
             const buttons = document.querySelectorAll(".option-button");
 
+            // Disable all answer buttons
             buttons.forEach(button => {
                 button.disabled = true;
             });
 
-            resultElement.textContent =
-                "Time's up! The answer was " + currentPerson.name;
-
+            // Show that time has run out
+            resultElement.textContent = "Time's up!";
             resultElement.style.color = "#ea4335";
 
+            // Show the correct answer
             buttons.forEach(button => {
                 if (button.textContent === currentPerson.name) {
                     button.classList.add("correct");
                 }
             });
 
-            if (questionNumber < MAX_ROUNDS) {
-                nextButton.style.display = "inline-block";
-            } else {
-                resultElement.textContent +=
-                    ` Final score: ${score}/${MAX_ROUNDS}`;
+            // =========================
+            // 5 SECOND AUTO-SKIP TIMER
+            // =========================
 
-                setTimeout(finishGame, 900);
-            }
+            let skipTime = 5;
+
+            timerElement.textContent =
+                `Next question in: ${skipTime}`;
+
+            timerInterval = setInterval(() => {
+                skipTime--;
+
+                timerElement.textContent =
+                    `Next question in: ${skipTime}`;
+
+                if (skipTime <= 0) {
+                    stopTimer();
+
+                    // If this was the last question, finish the game
+                    if (questionNumber >= MAX_ROUNDS) {
+                        finishGame();
+                    } else {
+                        // Otherwise automatically go to the next question
+                        nextQuestion();
+                    }
+                }
+            }, 1000);
         }
     }, 1000);
 }
