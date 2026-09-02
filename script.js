@@ -189,7 +189,7 @@ function startTimer() {
         // DANGER MODE
         // =========================
 
-        if (timeLeft < 4 && timeLeft > 0) {
+        if (timeLeft < 3 && timeLeft > 0) {
             timerElement.classList.add("timer-danger");
         } else {
             timerElement.classList.remove("timer-danger");
